@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       post :create_movement
     end
   end
+  
 end

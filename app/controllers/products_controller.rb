@@ -1,25 +1,19 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
 
-  # GET /products or /products.json
   def index
     @products = Product.all
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="Listado de productos.xlsx"'
+      }
+    end
   end
 
-  # GET /products/1 or /products/1.json
-  def show
-  end
-
-  # GET /products/new
   def new
     @product = Product.new
   end
 
-  # GET /products/1/edit
-  def edit
-  end
-
-  # POST /products or /products.json
   def create
     @product = Product.new(product_params)
 
@@ -34,46 +28,54 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1 or /products/1.json
+  def show
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      format.html
+      
+    end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+ 
   def update
-    respond_to do |format|
+    @product = Product.find(params[:id])
       if @product.update(product_params)
-        format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @product }
+        redirect_to @product, notice: 'Se actualizó el producto correctamente'
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
-  # DELETE /products/1 or /products/1.json
-  def destroy
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   def new_movement
     @product = Product.find(params[:id])
-    @movement = Movement.new
+    @movement = Movement.new(product_id: @product.id)
   end
 
-  def create_movement 
+  def create_movement
     @product = Product.find(params[:id])
+    @movement = Movement.new(movement_params)
+    @movement.product_id = @product.id
+    if @movement.save
+      redirect_to @product, notice: 'Se creó el movimiento correctamente'
+    else
+      flash[:notice] = 'Ha ocurrido un error al crear el movimiento.'
+      render :new_movement, status: :unprocessable_entity
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.require(:product).permit(:name, :reference, :description)
-    end
+  def product_params
+    params.require(:product).permit(:name, :description, :reference)
+  end
+
+  def movement_params 
+    params.require(:movement).permit(:movement_type, :quantity, :comment)
+  end
+    
 end
