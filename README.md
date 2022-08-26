@@ -1,24 +1,19 @@
-# README
+# SISTEMA DE PRODUCTOS
+Este es un proyecto que se basa en un CRUD de productos. Puede ingresar un producto, con su referencia y su cantidad. Información que queda registrada en una tabla de productos de la Base de Datos creada en SQLite3. Los productos se pueden editar y eliminar. Y para finalizar se pueden descargar los distintos productos cargados en la tabla así como sus detalles.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# COMENZANDO 🚀...
 
-Things you may want to cover:
+## TECNOLOGÍAS 
+- Ruby 3.1.2p20
+- rails 7.0.3.1
+- SQLite3
 
-* Ruby version
+## INSTALACIONES
+- Ruby 3.1.2p20
+- rails 7.0.3.1
+- SQLite3
 
-* System dependencies
+## CREACIÓN
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+PROYECTO creado con:
+```rails new my-project```
