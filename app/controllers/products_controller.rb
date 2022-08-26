@@ -16,30 +16,27 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
-    respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
+        redirect_to @product, notice: 'Se ha creado el producto correctamente.'
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        flash[:notice] = 'Ha ocurrido un error al crear el producto.'
+        render :new, status: :unprocessable_entity
       end
     end
-  end
 
   def show
     @product = Product.find(params[:id])
-    respond_to do |format|
-      format.html
-      
+      respond_to do |format|
+        format.html
+        format.xlsx{
+        response.headers['Content-Disposition'] = 'attachment; filename="Detalle de producto.xlsx"'
+      }
+      end
     end
-  end
 
   def edit
     @product = Product.find(params[:id])
   end
-
  
   def update
     @product = Product.find(params[:id])
@@ -49,7 +46,6 @@ class ProductsController < ApplicationController
         render :edit
       end
   end
-
 
   def new_movement
     @product = Product.find(params[:id])
@@ -69,7 +65,6 @@ class ProductsController < ApplicationController
   end
 
   private
-
   def product_params
     params.require(:product).permit(:name, :description, :reference)
   end
