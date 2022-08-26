@@ -4,9 +4,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     respond_to do |format|
       format.html
-      format.xlsx {
-        response.headers['Content-Disposition'] = 'attachment; filename="Listado de productos.xlsx"'
-      }
+      
     end
   end
 

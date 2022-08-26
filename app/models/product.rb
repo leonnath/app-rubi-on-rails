@@ -1,3 +1,8 @@
 class Product < ApplicationRecord
- validates :name, presence: true
+    has_many :movements
+    validates :name, presence: true
+
+    def quantity 
+        movement.sum(:quantity)
+    end
 end
