@@ -29,6 +29,17 @@
             <%= f.label :quantity, "Cantidad" %>
             <%= f.number_field :quantity, {class: 'form-control'} %>
         </div>
+
+         <div class="form-group">
+            <%= f.label :comment, "Comentario" %>
+            <%= f.text_area :comment, {class: 'form-control'} %>
+        </div>
+
+         <div class="form-group">
+            <%= f.submit "Crear movimiento", class: 'btn btn-primary' %>
+            <%= link_to "Cancelar", product_path(@product), class: 'btn btn-danger' %>
+        </div>
+
       <% end %>
     </div>
   </div>
