@@ -40,4 +40,3 @@ Abrir el navegador y escribir:
 - Añadir movimiento
 - Descargar movimiento en un archivo tipo excel
 - Descargar lista de productos en archivo de tipo excel
-- 
