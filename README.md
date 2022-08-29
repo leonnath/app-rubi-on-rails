@@ -17,3 +17,16 @@ Este es un proyecto que se basa en un CRUD de productos. Puede ingresar un produ
 
 PROYECTO creado con:
 ```rails new my-project```
+
+## LANZAMIENTO
+
+```rails server```
+
+Abrir el navegador y escribir:
+
+[localhost/](http://http://localhost:3000)
+
+
+## ILUSTRACIONES
+
+[![sistema-con-Ruby-On-Rails.jpg](https://i.postimg.cc/63qTpjCh/sistema-con-Ruby-On-Rails.jpg)](https://postimg.cc/wyK9Wkft)
