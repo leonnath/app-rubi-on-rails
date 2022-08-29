@@ -30,3 +30,14 @@ Abrir el navegador y escribir:
 ## ILUSTRACIONES
 
 [![sistema-con-Ruby-On-Rails.jpg](https://i.postimg.cc/63qTpjCh/sistema-con-Ruby-On-Rails.jpg)](https://postimg.cc/wyK9Wkft)
+
+## CONTENIDOS
+- Añadir producto
+- Listar productos
+- Editar producto
+- Eliminar producto
+- Ver detalles
+- Añadir movimiento
+- Descargar movimiento en un archivo tipo excel
+- Descargar lista de productos en archivo de tipo excel
+- 
